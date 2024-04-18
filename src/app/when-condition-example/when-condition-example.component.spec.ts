@@ -1,5 +1,4 @@
 import { ComponentFixture, DeferBlockBehavior, TestBed } from '@angular/core/testing';
-
 import { WhenConditionExampleComponent } from './when-condition-example.component';
 import { By } from '@angular/platform-browser';
 
@@ -12,8 +11,8 @@ describe('WhenConditionExampleComponent', () => {
       deferBlockBehavior: DeferBlockBehavior.Playthrough,
       imports: [WhenConditionExampleComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(WhenConditionExampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -23,12 +22,21 @@ describe('WhenConditionExampleComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should pass having - defer (when isVisible)', async () => {
+  it('should show @placeholder content', async () => {
     // Arrange
-    // await TestBed.configureTestingModule({
-    //   deferBlockBehavior: DeferBlockBehavior.Playthrough,
-    // }).compileComponents();
+    const fixture = TestBed.createComponent(WhenConditionExampleComponent);
 
+    // Act
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    // Assert
+    expect(fixture.nativeElement.innerHTML).toContain('Something until the loading starts');
+    expect(fixture.nativeElement.innerHTML).not.toContain('empty defer block');
+  });
+
+  it('should show @defer content on button press (when isVisible)', async () => {
+    // Arrange
     const fixture = TestBed.createComponent(WhenConditionExampleComponent);
 
     // Act
@@ -42,26 +50,6 @@ describe('WhenConditionExampleComponent', () => {
 
     // Assert
     expect(fixture.nativeElement.innerHTML).toContain('empty defer block');
+    expect(fixture.nativeElement.innerHTML).not.toContain('Something until the loading starts');
   });
 });
-
-
-// import { AppComponent } from './app.component';
-// import { Component } from '@angular/core';
-// import {
-//   DeferBlockBehavior,
-//   DeferBlockState,
-//   TestBed,
-//   fakeAsync,
-//   tick,
-// } from '@angular/core/testing';
-// import { By } from '@angular/platform-browser';
-
-// describe('AppComponent', () => {
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       imports: [AppComponent],
-//     }).compileComponents();
-//   });
-
-
