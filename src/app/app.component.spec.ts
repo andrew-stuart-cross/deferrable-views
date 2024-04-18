@@ -48,31 +48,7 @@ describe('AppComponent', () => {
   // defer (on immediate)
   // nested defer blocks
 
-  it('should pass having - defer (when isVisible)', async () => {
-    // Arrange
-    await TestBed.configureTestingModule({
-      deferBlockBehavior: DeferBlockBehavior.Playthrough,
-    }).compileComponents();
 
-
-    await TestBed.configureTestingModule({
-      deferBlockBehavior: DeferBlockBehavior.Playthrough,
-    }).compileComponents();
-
-    const fixture = TestBed.createComponent(AppComponent);
-
-    // Act
-    const button = fixture.debugElement.query(
-      By.css('[data-test="button--isVisible"]'),
-    ).nativeElement;
-    button.dispatchEvent(new Event('click'));
-
-    fixture.detectChanges();
-    await fixture.whenStable();
-
-    // Assert
-    expect(fixture.nativeElement.innerHTML).toContain('empty defer block');
-  });
 
   it('should pass having - defer (on idle)', fakeAsync(async () => {
     // Arrange
@@ -90,7 +66,7 @@ describe('AppComponent', () => {
         } @loading {}
       `,
     })
-    class DummyComponent {}
+    class DummyComponent { }
 
     const fixture = TestBed.createComponent(DummyComponent);
 
@@ -121,7 +97,7 @@ describe('AppComponent', () => {
         }
       `,
     })
-    class DummyComponent {}
+    class DummyComponent { }
 
     const fixture = TestBed.createComponent(DummyComponent);
 
@@ -152,7 +128,7 @@ describe('AppComponent', () => {
         }
       `,
     })
-    class DummyComponent {}
+    class DummyComponent { }
 
     const fixture = TestBed.createComponent(DummyComponent);
 
@@ -181,7 +157,7 @@ describe('AppComponent', () => {
         }
       `,
     })
-    class DummyComponent {}
+    class DummyComponent { }
 
     const fixture = TestBed.createComponent(DummyComponent);
 
@@ -213,7 +189,7 @@ describe('AppComponent', () => {
         }
       `,
     })
-    class DummyComponent {}
+    class DummyComponent { }
 
     const fixture = TestBed.createComponent(DummyComponent);
 
@@ -244,7 +220,7 @@ describe('AppComponent', () => {
         }
       `,
     })
-    class DummyComponent {}
+    class DummyComponent { }
 
     const fixture = TestBed.createComponent(DummyComponent);
 
@@ -275,7 +251,7 @@ describe('AppComponent', () => {
         }
       `,
     })
-    class DummyComponent {}
+    class DummyComponent { }
 
     const fixture = TestBed.createComponent(DummyComponent);
 

@@ -1,0 +1,20 @@
+<h1>When condition example</h1>
+
+<button data-test="button--isVisible" (click)="isVisible = !isVisible">
+  Toggle
+</button>
+
+@defer (when isVisible) {
+<div>empty defer block</div>
+}
+@placeholder {
+  <div>Something until the loading starts</div>
+}
+@loading {
+  <div>Loading...</div>
+}
+@error {
+  <div>Something went wrong</div>
+}
+
+<hr>
